@@ -5,9 +5,10 @@
 Programa que permite enviar mensajes de texto via consola
 
 License: GPLv3
-Copyright: Copyright (C) 2009  Distrito Socialista Tecnologico AIT PDVSA M?rida
+Copyright: Copyright (C) 2010  Distrito Socialista Tecnologico AIT PDVSA Merida
 Author: Ernesto Nadir Crespo Avila
 Email: ecrespo@gmail.com
+version: 0.1
 
 """
 
@@ -46,9 +47,9 @@ class Mensaje:
             print "Enviado mensaje al numero %s" %num_cel
     
 if __name__ == "__main__":
-    mensaje = Mensaje()
-    mensaje.Enviar("pong","04265673018")
-    mensaje.EnviarMultiples("Segunda prueba a las 10:25am","./numeros.txt")
+    #mensaje = Mensaje()
+    #mensaje.Enviar("pong","numero")
+    #mensaje.EnviarMultiples("Segunda prueba a las 10:25am","./numeros.txt")
     #mensaje.EnviarMultiples("Saludos camaradas, mensaje enviado desde Linux","./numeros.txt")
     #Importar m?dulo argparse para capturar los argumentos del comando    
     import argparse
