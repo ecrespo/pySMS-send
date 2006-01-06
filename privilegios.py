@@ -3,13 +3,13 @@
 
 
 """
-Name: su
+Name: privilegios
 Description: Modulo que permite la ejecución de comandos como root
-Version:0.1
+Version:0.2
 License: GPLv3
-Copyright: Copyright (C) 2009 Proyecto Libre Accesibilidad - Distrito Socialista Tecnologico AIT PDVSA  <moderador@libreaccesibilidad.org>
+Copyright: Copyright (C) 2010 Distrito Socialista Tecnologico AIT PDVSA  Merida
 Author: Ernesto Nadir Crespo Avila
-Email: ernesto@libreaccesibilidad.org
+Email: ecrespo@gmail.com
 """
 
 
@@ -22,7 +22,6 @@ from commands import getstatusoutput
 
 def ask_pass_func(context, prompt):
     try:
-        r = getstatusoutput("mpg123 voces/11.mp3")
         return getpass.getpass("Escriba la clave de administrador (root): ")
     except KeyboardInterrupt:
         print
