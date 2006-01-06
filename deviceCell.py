@@ -1,5 +1,17 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
+"""
+Name: privilegios
+Description: Modulo que permite detectar que el dispositivo este conectado y si no se reconfigura, adicionalmente pasa la informacion
+del dispositivo.
+
+Version:0.1
+License: GPLv3
+Copyright: Copyright (C) 2010 Distrito Socialista Tecnologico AIT PDVSA  Merida
+Author: Ernesto Nadir Crespo Avila
+Email: ecrespo@gmail.com
+"""
 import config
 from os import path
 from privilegios import ejecutar, AgregarUsuarioSudo
