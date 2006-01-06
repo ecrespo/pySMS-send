@@ -3,33 +3,39 @@
 # -*- coding: utf-8 -*-
 
 """
-Programa que permite enviar mensajes de texto via consola
-
+Modulo que permite enviar mensajes de texto desde consola
 License: GPLv3
-Copyright: Copyright (C) 2009  Distrito Socialista Tecnologico AIT PDVSA M?rida
+Copyright: Copyright (C) 2010  Distrito Socialista Tecnologico AIT PDVSA Merida
 Author: Ernesto Nadir Crespo Avila
 Email: ecrespo@gmail.com
-
+version: 0.1
 """
 import serial
-
+#Se define la clase SMS
 class Sms:
     def __init__(self,dispositivo,baudios):
-        
+        #Se define el modo del celular
         self.__modo = "AT+MODE=2\r\n"
+        #Se define el envio de mensajes en ascii
         self.__te = "AT+CSCS=ASCII\r\n"
+        #Asignacion de valores del puerto serial
         self.__dispositivo_serial = dispositivo
         self.__baudios = baudios
+        #Se asocia la instancia del puerto serial con sus parametros
         self.__serial = serial.Serial(self.__dispositivo_serial,self.__baudios,timeout=0.7)
+        #Se abre el puerto,se escribe el modo y el formato ascii para los mensajes
         self.__serial.open()
         self.__serial.write(self.__modo)
         self.__serial.write(self.__te)
         
     
     def SendMensaje(self,numero,mensaje):
+        #Se envie el comando at para definir el numero de celular a enviar el mensaje
         self.__msg1  = "AT+CMGS=\"%s\"\r" %numero
         self.__msg2 = mensaje
+        #Se le agrega al mensaje el caracter 26 control z.
         self.__msg2 = self.__msg2 + chr(26)
+        #Se envie el mensaje
         self.__serial.write(self.__msg1)
         self.__serial.write(self.__msg2)
         
