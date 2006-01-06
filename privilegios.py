@@ -13,7 +13,7 @@ Email: ecrespo@gmail.com
 """
 
 
-import pdb
+
 import gksu2 as gksu
 import gobject
 import getpass
