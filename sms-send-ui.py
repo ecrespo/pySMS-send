@@ -18,14 +18,15 @@ import pygtk
 pygtk.require('2.0')
 import gtk, gtk.glade, inspect, sys
 
-#
+
+
 import threading
 import thread
 import gobject
 #Iniciando el hilo sin usarlo
 gtk.gdk.threads_init()
 
-class App:
+class App(threading.Thread):
     def __init__(self):
         #Asignando a una variable el nombre del archivo glade
         self.__glade_file = "./sendSMS2.glade"
@@ -48,7 +49,7 @@ class App:
         self.__imagemenuitem5 = self.__w_tree.get_widget("imagemenuitem5")
         self.__imagemenuitem10 = self.__w_tree.get_widget("imagemenuitem10")
         #Asociacion de widgets con metodos.
-        
+        threading.Thread.__init__(self)
         self.__w_tree.signal_autoconnect(dict(inspect.getmembers(self)))
         self.__lista_numeros = open("./numeros.txt","r").readlines()
         self.__numeros = []
@@ -61,6 +62,7 @@ class App:
         self.__label2.show()
         self.__bandera_mensaje = 1
         self.__sms = Sms(self.__dispositivo,self.__baudios)
+        
         self.__ventana1.show()
 
             
@@ -101,11 +103,16 @@ class App:
                 
             
     def on_ejecutar_clicked(self, *args):
-        self.__ejecucion()
+        lock =  thread.allocate_lock()
+        lock.acquire()
+        thread.start_new_thread( self.__ejecucion, ())
+        lock.release()
+        #self.__ejecucion()
                 
     def __ejecucion(self,*args):
         self.__resultado.set_text("")
         self.__texto = self.__mensaje.get_text()
+        
         if self.__bandera_mensaje == 1:
             self.__celular = self.__num_cel.get_text()
             if Validar(self.__celular) == 0:
@@ -114,6 +121,7 @@ class App:
                 self.__sms.SendMensaje(self.__celular,self.__texto)
                 self.__resultado.set_text("Mensaje enviado al %s" %self.__celular)
         else:
+           
             #Multiples mensajes
             for i in range(len(self.__numeros)):
                 if Validar(self.__numeros[i]) == 0:
