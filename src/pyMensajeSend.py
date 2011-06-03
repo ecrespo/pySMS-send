@@ -5,10 +5,10 @@
 """
 Modulo que permite enviar mensajes de texto desde consola
 License: GPLv3
-Copyright: Copyright (C) 2010  Distrito Socialista Tecnologico AIT PDVSA Merida
+Copyright: Copyright (C) 2011 Ernesto Nadir Crespo Avila
 Author: Ernesto Nadir Crespo Avila
 Email: ecrespo@gmail.com
-version: 0.1
+version: 0.2
 """
 import serial
 #Se define la clase SMS
@@ -41,7 +41,7 @@ class Sms:
         
 
 if __name__ == "__main__":
-    #sms = Sms("/dev/ttyUSB0",19200)
-    #sms.SendMensaje("numero","esta es una prueba")
+    sms = Sms("/dev/ttyUSB0",19200)
+    sms.SendMensaje("numero","esta es una prueba")
     pass
 
