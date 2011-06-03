@@ -5,8 +5,8 @@ Descripcion: Modulo que permite manipular archivos de configuracion.
 Autor: Ernesto Crespo
 Correo: ecrespo@gmail.com
 Licencia: GPL Version 3
-Copyright: Copyright (C) 2010 Distrito Socialista Tecnologico AIT PDVSA  Merida
-Version: 0.1
+Copyright: Copyright (C) 2011 Ernesto Nadir Crespo Avila
+Version: 0.2
 
 """
 

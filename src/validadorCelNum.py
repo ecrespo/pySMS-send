@@ -4,10 +4,10 @@
 """
 Programa que permite validar numeros de telefono celular para las companias movistar, digitel y movilnet.
 License: GPLv3
-Copyright: Copyright (C) 2010  Distrito Socialista Tecnologico AIT PDVSA Merida
+Copyright: Copyright (C) 2011 Ernesto Nadir Crespo Avila
 Author: Ernesto Nadir Crespo Avila
 Email: ecrespo@gmail.com
-Version: 0.1
+Version: 0.2
 """
 
 import re

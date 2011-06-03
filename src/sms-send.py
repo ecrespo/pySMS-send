@@ -5,10 +5,10 @@
 Programa que permite enviar mensajes de texto via consola
 
 License: GPLv3
-Copyright: Copyright (C) 2010  Distrito Socialista Tecnologico AIT PDVSA Merida
+Copyright: Copyright (C) 2011 Ernesto Nadir Crespo Avila
 Author: Ernesto Nadir Crespo Avila
 Email: ecrespo@gmail.com
-version: 0.1
+version: 0.2
 
 """
 
@@ -20,6 +20,7 @@ from time import sleep
 class Mensaje:
     def __init__(self):
         self.__celular = Cell("./config-sms.conf")
+
         self.__dispositivo,self.__baudios = self.__celular.InformacionDispositivo()
         self.__mensaje = ""
         self.__numeros = []
@@ -47,7 +48,7 @@ class Mensaje:
             print "Enviado mensaje al numero %s" %num_cel
     
 if __name__ == "__main__":
-    #mensaje = Mensaje()
+    mensaje = Mensaje()
     #mensaje.Enviar("pong","numero")
     #mensaje.EnviarMultiples("Segunda prueba a las 10:25am","./numeros.txt")
     #mensaje.EnviarMultiples("Saludos camaradas, mensaje enviado desde Linux","./numeros.txt")
@@ -57,4 +58,5 @@ if __name__ == "__main__":
     #Creaci?n del parse 
     parser = argparse.ArgumentParser(prog='sms-send',description="Programa que envia mensajes de texto desde Linux por el Celular")
     parser.add_argument('-a','--accion',type=str,choices=acciones,default=acciones,help='Acciones de sms-send')
+    
     

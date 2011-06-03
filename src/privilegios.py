@@ -5,11 +5,12 @@
 """
 Name: privilegios
 Description: Modulo que permite la ejecución de comandos como root
-Version:0.2
+Version:0.3
 License: GPLv3
-Copyright: Copyright (C) 2010 Distrito Socialista Tecnologico AIT PDVSA  Merida
+Copyright: Copyright (C) 2011 Ernesto Nadir Crespo Avila
 Author: Ernesto Nadir Crespo Avila
 Email: ecrespo@gmail.com
+
 """
 
 
