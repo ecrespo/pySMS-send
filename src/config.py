@@ -11,7 +11,7 @@ Version: 0.2
 """
 
 class config:
-    
+    """Modulo que permite manejar archivo de configuracion"""    
     def __init__(self,cnffile):
         self.__cnffile = cnffile
         self.__config = ConfigParser.ConfigParser()
