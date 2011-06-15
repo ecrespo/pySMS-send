@@ -56,6 +56,8 @@ class Cell:
                     return 1
             else:
                 return 1
+        elif self.__celular == "android" and self.__conexionAndroid == "wifi":
+            return 1
         
     
             
@@ -86,7 +88,9 @@ class Cell:
                 else:
                     return 0
             else:
-                return 0 
+                return 0
+        elif self.__celular == "android" and self.__conexionAndroid == "wifi":
+            return 0
         
         
     
@@ -96,7 +100,9 @@ class Cell:
         elif self.__celular == "android" and self.__conexionAndroid == "usb":
             r = getstatusoutput("%s devices" %self.__adb)
             if r[0] == 0:
-                info_dispositivo = r[1].split("\n")[1].split("\tdevice")[0]
+                info_dispositivo = ("android","usb",r[1].split("\n")[1].split("\tdevice")[0])
+        elif self.__celular == "android" and self.__conexionAndroid == "wifi":
+            info_dispositivo = ("android","wifi")
         return info_dispositivo 
             
 
