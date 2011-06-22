@@ -18,19 +18,17 @@ from privilegios import ejecutar, AgregarUsuarioSudo
 from commands import getstatusoutput
 
 class Cell:
-    def __init__(self,celular,configuracion,conexion="usb"):
+    def __init__(self,celular,configuracion,conexion):
         """
         Se capturan los valores del archivo de configuracion y se asigna los valores a
         los datos del objeto Cell
         """
         self.__celular = celular
         self.__configparser = config.config(configuracion)
+        self.__conexionAndroid = conexion
         if self.__celular == "android":
-            self.__conexionAndroid = conexion
-            self.__tipoconexion = self.__configparser.ShowValueItem("android","conexion")
             self.__adb = self.__configparser.ShowValueItem("android","ruta_adb")
         elif celular == "v9":
-            self.__conexionAndroid = ""
             self.__dispositivo = self.__configparser.ShowValueItem("dispositivo","dispositivo")
             self.__baudios = self.__configparser.ShowValueItem("dispositivo","baudios")
         
@@ -100,9 +98,9 @@ class Cell:
         elif self.__celular == "android" and self.__conexionAndroid == "usb":
             r = getstatusoutput("%s devices" %self.__adb)
             if r[0] == 0:
-                info_dispositivo = ("android","usb",r[1].split("\n")[1].split("\tdevice")[0])
+                info_dispositivo = ("android","usb",self.__adb,r[1].split("\n")[1].split("\tdevice")[0])
         elif self.__celular == "android" and self.__conexionAndroid == "wifi":
-            info_dispositivo = ("android","wifi")
+            info_dispositivo = ("android","wifi",self.__adb)
         return info_dispositivo 
             
 
